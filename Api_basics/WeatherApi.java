@@ -2,6 +2,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import com.google.gson.Gson;
 
 public class WeatherApi {
     public static void main(String args[]) {
@@ -12,10 +13,27 @@ public class WeatherApi {
                 .build();
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println("Status Code : " + response.statusCode());
-            System.out.println("Body : \n" + response.body());
+            Gson gson = new Gson();
+            WeatherR weather = gson.fromJson(response.body(), WeatherR.class);
+            System.out.println("### Weather Report ###");
+            System.out.println("Latitude :" + weather.latitude);
+            System.out.println("Longitude :" + weather.longitude);
+            System.out.println("Time :" + weather.subClass.time);
+            System.out.println("Temperature :" + weather.subClass.temperature);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+}
+
+class WeatherR {
+    public String longitude;
+    public String latitude;
+    WeatherSub subClass;
+}
+
+class WeatherSub {
+    String time;
+    double temperature;
 }
