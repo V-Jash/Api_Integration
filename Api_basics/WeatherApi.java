@@ -30,7 +30,7 @@ public class WeatherApi {
 class WeatherR {
     public String longitude;
     public String latitude;
-    WeatherSub subClass;
+    WeatherSub current_weather;
 }
 
 class WeatherSub {
