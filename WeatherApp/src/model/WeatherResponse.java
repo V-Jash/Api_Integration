@@ -1,15 +1,15 @@
 package model;
 
 public class WeatherResponse {
-    String latitude;
-    String longitude;
+    public String latitude;
+    public String longitude;
     WeatherReport current_weather;
 
 }
 
 class WeatherReport {
-    String time;
-    double temperature;
-    double windspeed;
-    double winddirection;
+    public String time;
+    public double temperature;
+    public double windspeed;
+    public double winddirection;
 }
