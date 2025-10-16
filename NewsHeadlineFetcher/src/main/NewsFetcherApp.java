@@ -12,6 +12,7 @@ public class NewsFetcherApp {
         NewsResponse response = new NewsApiService().fetchTopHeadlines();
         System.out.println("### Fetching the HeadLines ###");
         System.out.println("Status code :" + response.status);
+        System.out.println("The number of responses found are :" + response.totalResults);
 
     }
 }
